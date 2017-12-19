@@ -12,4 +12,8 @@ install:
    - python setup.py install
    - pip install -r dev-requirements.txt
 
-script: pytest -v test
+script:
+  - py.test -vv --cov=[REPOSITORY_NAME] --cov-report xml tests
+
+after_script:
+  - python-codacy-coverage -r coverage.xml
