@@ -1,2 +1,2 @@
 codacy-coverage
-pytest
+pytest==3.2.3

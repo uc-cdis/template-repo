@@ -5,16 +5,14 @@ helps with installation.
 More info on various arguments here:
 https://docs.python.org/2.7/distutils/setupscript.html
 """
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 setup(
     name='template',
     version='0.0.1',
-    description='This is a template',
+    description='Gen3 service template',
     url='https://github.com/uc-cdis/template-repo',
     license='Apache',
-    packages=[
-        'template-repo',
-    ],
+    packages=find_packages(),
 )
