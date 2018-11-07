@@ -4,7 +4,8 @@ import time
 
 from SERVICE_NAME import auth
 from SERVICE_NAME.errors import AuthZError
-from SERVICE_NAME.admin import blueprint as admin_bp
+from SERVICE_NAME.admin_endpoints import blueprint as admin_bp
+from SERVICE_NAME.some_endpoints import blueprint as some_bp
 from .errors import JWTError
 
 app = flask.Flask(__name__)
@@ -47,6 +48,7 @@ def app_init(app):
 
     app.logger.info('Registering blueprints')
     app.register_blueprint(admin_bp, url_prefix='/admin')
+    app.register_blueprint(some_bp, url_prefix='/something')
 
     end = int(round(time.time() - start))
     app.logger.info('Initialization complete in {} sec'.format(end))
@@ -54,6 +56,11 @@ def app_init(app):
 
 def run_for_development(**kwargs):
     app.logger.setLevel(logging.INFO)
+
+    # import os
+    # for key in ["http_proxy", "https_proxy"]:
+    #     if os.environ.get(key):
+    #         del os.environ[key]
 
     # load configuration
     app.config.from_object('SERVICE_NAME.dev_settings')
