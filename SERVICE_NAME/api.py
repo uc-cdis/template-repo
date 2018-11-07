@@ -8,13 +8,22 @@ from SERVICE_NAME.admin_endpoints import blueprint as admin_bp
 from SERVICE_NAME.some_endpoints import blueprint as some_bp
 from .errors import JWTError
 
+
 app = flask.Flask(__name__)
+app.register_blueprint(admin_bp, url_prefix='/admin')
+app.register_blueprint(some_bp, url_prefix='/something')
 
 
 @app.route('/user_endpoint', methods=['GET'])
 def do_something_connected():
     """
     User endpoint
+    ---
+    responses:
+        200:
+            description: Success
+        401:
+            description: Unauthorized
     """
     token = flask.request.headers.get('Authorization')
     try:
@@ -32,10 +41,10 @@ def health_check():
     tags:
       - system
     responses:
-      200:
-        description: Healthy
-      default:
-        description: Unhealthy
+        200:
+            description: Healthy
+        default:
+            description: Unhealthy
     """
     return 'Healthy', 200
 
@@ -45,10 +54,6 @@ def app_init(app):
     start = time.time()
 
     # do the necessary here!
-
-    app.logger.info('Registering blueprints')
-    app.register_blueprint(admin_bp, url_prefix='/admin')
-    app.register_blueprint(some_bp, url_prefix='/something')
 
     end = int(round(time.time() - start))
     app.logger.info('Initialization complete in {} sec'.format(end))

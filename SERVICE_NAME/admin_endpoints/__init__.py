@@ -11,6 +11,14 @@ blueprint = Blueprint('admin', __name__)
 def do_something_important():
     """
     Admin endpoint
+    ---
+    tags:
+      - admin
+    responses:
+        200:
+            description: Success
+        401:
+            description: Unauthorized
     """
     try:
         auth.current_user.require_admin() # raises error if user is not admin
@@ -23,6 +31,14 @@ def do_something_important():
 def check_if_user_is_admin():
     """
     Admin endpoint
+    ---
+    tags:
+      - admin
+    responses:
+        200:
+            description: User is admin
+        403:
+            description: User is not admin
     """
     # check if user is admin (raises error if user is not connected)
     if auth.current_user.is_admin:
