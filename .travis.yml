@@ -19,7 +19,7 @@ before_install:
 
 # run tests
 script:
-  - py.test -vv --cov=SERVICE_NAME --cov-report xml tests
+  - py.test -vv --cov=service_name --cov-report xml tests
 
 after_script:
   - python-codacy-coverage -r coverage.xml

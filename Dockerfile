@@ -1,11 +1,11 @@
-# To run: docker run -v /path/to/wsgi.py:/var/www/SERVICE_NAME/wsgi.py --name=SERVICE_NAME -p 81:80 SERVICE_NAME
-# To check running container: docker exec -it SERVICE_NAME /bin/bash
+# To run: docker run -v /path/to/wsgi.py:/var/www/service_name/wsgi.py --name=service_name -p 81:80 service_name
+# To check running container: docker exec -it service_name /bin/bash
 
 FROM ubuntu:16.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-ENV appname=SERVICE_NAME
+ENV appname=service_name
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \

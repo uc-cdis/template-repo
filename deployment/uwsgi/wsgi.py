@@ -1,4 +1,4 @@
-from SERVICE_NAME.app import app
+from service_name.api import app
 
 # wsgi.ini references this file
 

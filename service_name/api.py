@@ -2,10 +2,10 @@ import flask
 import logging
 import time
 
-from SERVICE_NAME import auth
-from SERVICE_NAME.errors import AuthZError
-from SERVICE_NAME.admin_endpoints import blueprint as admin_bp
-from SERVICE_NAME.some_endpoints import blueprint as some_bp
+from service_name import auth
+from service_name.errors import AuthZError
+from service_name.admin_endpoints import blueprint as admin_bp
+from service_name.some_endpoints import blueprint as some_bp
 from .errors import JWTError
 
 
@@ -68,7 +68,7 @@ def run_for_development(**kwargs):
     #         del os.environ[key]
 
     # load configuration
-    app.config.from_object('SERVICE_NAME.dev_settings')
+    app.config.from_object('service_name.dev_settings')
 
     try:
         app_init(app)
