@@ -7,6 +7,9 @@ FROM tiangolo/uwsgi-nginx:python3.6-alpine3.7
 
 ENV appname=service_name
 
+# number of uwsgi worker processes
+ENV UWSGI_CHEAPER 2
+
 # ensure www-data user exists
 RUN addgroup -g 82 -S www-data \
     && adduser -u 82 -D -S -G www-data www-data
@@ -36,6 +39,10 @@ RUN mkdir -p /var/www/$appname \
     && chown www-data /var/www/$appname
 
 EXPOSE 80
+
+RUN COMMIT=`git rev-parse HEAD` && echo "COMMIT=\"${COMMIT}\"" >$appname/version_data.py \
+    && VERSION=`git describe --always --tags` && echo "VERSION=\"${VERSION}\"" >>$appname/version_data.py \
+    && python setup.py install
 
 WORKDIR /var/www/$appname
 
