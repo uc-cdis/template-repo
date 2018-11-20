@@ -2,7 +2,7 @@
 # To check running container: docker exec -it service_name /bin/bash
 
 
-FROM tiangolo/uwsgi-nginx:python3.6-alpine3.7
+FROM quay.io/cdis/python-nginx:master
 
 
 ENV appname=service_name
