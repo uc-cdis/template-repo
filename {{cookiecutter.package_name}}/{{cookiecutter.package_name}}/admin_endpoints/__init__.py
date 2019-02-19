@@ -1,7 +1,7 @@
 from flask import Blueprint
 
-from service_name import auth
-from service_name.errors import JWTError
+from .. import auth
+from ..errors import JWTError
 
 
 blueprint = Blueprint('admin', __name__)

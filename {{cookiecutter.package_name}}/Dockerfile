@@ -1,11 +1,11 @@
-# To run: docker run -v /path/to/wsgi.py:/var/www/service_name/wsgi.py --name=service_name -p 81:80 service_name
-# To check running container: docker exec -it service_name /bin/bash
+# To run: docker run -v /path/to/wsgi.py:/var/www/{{ cookiecutter.package_name }}/wsgi.py --name={{ cookiecutter.package_name }} -p 81:80 {{ cookiecutter.package_name }}
+# To check running container: docker exec -it {{ cookiecutter.package_name }} /bin/bash
 
 
 FROM quay.io/cdis/python-nginx:master
 
 
-ENV appname=service_name
+ENV appname={{ cookiecutter.package_name }}
 
 # number of uwsgi worker processes
 ENV UWSGI_CHEAPER 2

@@ -1,4 +1,4 @@
-from service_name.api import run_for_development
+from {{ cookiecutter.package_name }}.api import run_for_development
 
 
 if __name__ == '__main__':

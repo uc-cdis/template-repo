@@ -2,11 +2,10 @@ import flask
 import logging
 import time
 
-from service_name import auth
-from service_name.errors import AuthZError
-from service_name.admin_endpoints import blueprint as admin_bp
-from service_name.some_endpoints import blueprint as some_bp
-from .errors import JWTError
+from . import auth
+from .errors import AuthZError, JWTError
+from .admin_endpoints import blueprint as admin_bp
+from .some_endpoints import blueprint as some_bp
 
 
 app = flask.Flask(__name__)
@@ -68,7 +67,7 @@ def run_for_development(**kwargs):
     #         del os.environ[key]
 
     # load configuration
-    app.config.from_object('service_name.dev_settings')
+    app.config.from_object('{{ cookiecutter.package_name }}.dev_settings')
 
     try:
         app_init(app)

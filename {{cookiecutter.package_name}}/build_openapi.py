@@ -3,7 +3,7 @@ from flasgger import Swagger, Flasgger
 import yaml
 from yaml.representer import Representer
 
-from service_name.api import app
+from {{ cookiecutter.package_name }}.api import app
 from openapi.app_info import app_info
 
 
