@@ -9,11 +9,11 @@ from setuptools import setup, find_packages
 
 
 setup(
-    name='{{ cookiecutter.package_name }}',
-    version='0.0.1',
-    description='Gen3 service template',
-    url='https://github.com/uc-cdis/{{ cookiecutter.package_name }}',
-    license='Apache',
+    name="{{ cookiecutter.package_name }}",
+    version="0.0.1",
+    description="Gen3 service template",
+    url="https://github.com/uc-cdis/{{ cookiecutter.package_name }}",
+    license="Apache",
     packages=find_packages(),
 {% if cookiecutter.package_type == 'Library' %}
     install_requires=[

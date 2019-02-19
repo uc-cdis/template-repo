@@ -4,10 +4,10 @@ from .. import auth
 from ..errors import JWTError
 
 
-blueprint = Blueprint('admin', __name__)
+blueprint = Blueprint("admin", __name__)
 
 
-@blueprint.route('')
+@blueprint.route("")
 def do_something_important():
     """
     Admin endpoint
@@ -21,13 +21,13 @@ def do_something_important():
             description: Unauthorized
     """
     try:
-        auth.current_user.require_admin() # raises error if user is not admin
-        return 'Success! User is admin', 200
+        auth.current_user.require_admin()  # raises error if user is not admin
+        return "Success! User is admin", 200
     except JWTError as e:
         return e.message, e.code
 
 
-@blueprint.route('/is_admin')
+@blueprint.route("/is_admin")
 def check_if_user_is_admin():
     """
     Admin endpoint
@@ -43,8 +43,8 @@ def check_if_user_is_admin():
     try:
         # check if user is admin (raises error if user is not connected)
         if auth.current_user.is_admin:
-            return 'Success! User is admin', 200
+            return "Success! User is admin", 200
         else:
-            return 'Woops! User is not admin', 403
+            return "Woops! User is not admin", 403
     except JWTError as e:
         return e.message, e.code

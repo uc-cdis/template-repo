@@ -9,11 +9,11 @@ from .some_endpoints import blueprint as some_bp
 
 
 app = flask.Flask(__name__)
-app.register_blueprint(admin_bp, url_prefix='/admin')
-app.register_blueprint(some_bp, url_prefix='/something')
+app.register_blueprint(admin_bp, url_prefix="/admin")
+app.register_blueprint(some_bp, url_prefix="/something")
 
 
-@app.route('/user_endpoint', methods=['GET'])
+@app.route("/user_endpoint", methods=["GET"])
 def do_something_connected():
     """
     User endpoint
@@ -24,15 +24,15 @@ def do_something_connected():
         401:
             description: Unauthorized
     """
-    token = flask.request.headers.get('Authorization')
+    token = flask.request.headers.get("Authorization")
     try:
-        user = auth.current_user # raises error if user is not connected
-        return 'Success! User is {}'.format(user.username), 200
+        user = auth.current_user  # raises error if user is not connected
+        return "Success! User is {}".format(user.username), 200
     except JWTError as e:
         return e.message, e.code
 
 
-@app.route('/_status', methods=['GET'])
+@app.route("/_status", methods=["GET"])
 def health_check():
     """
     Health check endpoint
@@ -45,17 +45,17 @@ def health_check():
         default:
             description: Unhealthy
     """
-    return 'Healthy', 200
+    return "Healthy", 200
 
 
 def app_init(app):
-    app.logger.info('Initializing app')
+    app.logger.info("Initializing app")
     start = time.time()
 
     # do the necessary here!
 
     end = int(round(time.time() - start))
-    app.logger.info('Initialization complete in {} sec'.format(end))
+    app.logger.info("Initialization complete in {} sec".format(end))
 
 
 def run_for_development(**kwargs):
@@ -67,7 +67,7 @@ def run_for_development(**kwargs):
     #         del os.environ[key]
 
     # load configuration
-    app.config.from_object('{{ cookiecutter.package_name }}.dev_settings')
+    app.config.from_object("{{ cookiecutter.package_name }}.dev_settings")
 
     try:
         app_init(app)
