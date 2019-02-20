@@ -1,0 +1,5 @@
+{
+    "package_name": "samplepackage",
+    "package_type": ["Service", "Library"],
+    "python_version": "3.6"
+}
