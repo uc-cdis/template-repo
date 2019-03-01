@@ -5,29 +5,29 @@ verify_ssl = true
 
 [dev-packages]
 codacy-coverage = "*"
-pytest = ">=3.2.3"
-pytest-cov = ">=2.5.1"
-pytest-flask = ">=0.10.0"
+pytest = "~=3.2"
+pytest-cov = "~=2.5"
+truffleHog = "*"
+PyGithub = "*"
+{%- if cookiecutter.package_type == 'Service' %}
+pytest-flask = "~=0.10"
+flasgger = "*"
 PyYAML = ">=3.13"
+{%- endif %}
 
 [packages]
-{% if cookiecutter.package_type == 'Library' %}
+{%- if cookiecutter.package_type == 'Library' %}
 {{ cookiecutter.package_name }} = {editable = true,path = "."}
-{% elif cookiecutter.package_type == 'Service' %}
-requests = "*"
-flasgger = "*"
-Flask-CORS = ">=3.0.3"
-authutils = ">=3.0.1"
-cdiserrors = ">=0.1.1"
-cdislogging = ">=0.0.3"
-cdispyutils = ">=0.2.11"
-gdcdictionary = ">=1.1.0"
-datamodelutils = ">=0.4.0"
-indexclient = ">=1.5.7"
-psqlgraph = ">=1.2.3"
-userdatamodel = ">=1.1.7"
+{%- elif cookiecutter.package_type == 'Service' %}
 Flask = "*"
-{% endif %}
+Flask-CORS = "~=3.0"
+authutils = "~=3.0"
+cdiserrors = "~=0.1"
+cdispyutils = "~=0.2,>=0.2.11"
+gdcdictionary = "~=1.1"
+datamodelutils = "~=0.4"
+userdatamodel = "~=1.1"
+{%- endif %}
 
 [requires]
 python_version = "{{ cookiecutter.python_version }}"

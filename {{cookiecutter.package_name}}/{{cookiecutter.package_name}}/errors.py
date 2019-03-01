@@ -1,5 +1,7 @@
 from cdiserrors import *
+{% if cookiecutter.package_type == 'Service' %}
 from authutils.errors import JWTError
+{% endif %}
 
 
 class CustomException(APIError):

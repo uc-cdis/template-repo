@@ -1,26 +1,29 @@
-sudo: false
+dist: xenial
 language: python
-
-python: "3.6"
-
+python:
+- 3.6
 cache:
-  - pip
-  - apt
-
-# install dependencies
+- pip
+- apt
 install:
-  - pip install pipenv
-  - pipenv install --dev
-  - pipenv graph
-
-before_install:
-  - pip install -r thog_secret_requirements.txt
-  - wget https://raw.githubusercontent.com/lookcrabs/TruffleHog_Scripts/master/th_wrapper.py
-  - pipenv run python th_wrapper.py -w truffles.json -c thog_config.json -g file:///${PWD}/ --check
-
-# run tests
+- pip install pipenv
+- pipenv install --dev --deploy
+- pipenv graph
 script:
-  - pipenv run py.test -vv --cov={{ cookiecutter.package_name }} --cov-report xml tests
-
+- pipenv run py.test -vv --cov={{ cookiecutter.package_name }} --cov-report xml tests
+- pipenv run python th_wrapper.py -w truffles.json -c thog_config.json -g file:///${PWD}/ --check
 after_script:
-  - pipenv run python-codacy-coverage -r coverage.xml
+- pipenv run python-codacy-coverage -r coverage.xml
+{%- if cookiecutter.package_type == 'Library' %}
+before_deploy:
+- sed -i.bak "s/=get_version()/='$TRAVIS_TAG'/g" setup.py
+- cat setup.py
+- if [ $(python setup.py --version) == '0.0.0' ]; then travis_terminate 1; fi
+deploy:
+  provider: pypi
+  user: uc-ctds
+  skip_existing: true
+  skip_cleanup: true
+  on:
+    tags: true
+{%- endif %}
