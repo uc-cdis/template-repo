@@ -1,7 +1,7 @@
 dist: xenial
 language: python
 python:
-- 3.6
+- {{ cookiecutter.python_version }}
 cache:
 - pip
 - apt
@@ -25,5 +25,9 @@ deploy:
   skip_existing: true
   skip_cleanup: true
   on:
+    python: {{ cookiecutter.python_version }}
+    repo: uc-cdis/{{ cookiecutter.package_name }}
     tags: true
+after_deploy:
+- gen3git release
 {%- endif %}

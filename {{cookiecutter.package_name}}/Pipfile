@@ -9,6 +9,7 @@ pytest = "~=3.2"
 pytest-cov = "~=2.5"
 truffleHog = "*"
 PyGithub = "*"
+gen3git = "*"
 {%- if cookiecutter.package_type == 'Service' %}
 pytest-flask = "~=0.10"
 flasgger = "*"
