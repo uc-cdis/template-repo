@@ -13,7 +13,7 @@ gen3git = "*"
 {%- if cookiecutter.package_type == 'Service' %}
 pytest-flask = "~=0.10"
 flasgger = "*"
-PyYAML = ">=3.13"
+PyYAML = "~=5.1"
 {%- endif %}
 
 [packages]
