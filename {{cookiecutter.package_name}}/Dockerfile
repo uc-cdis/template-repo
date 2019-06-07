@@ -2,7 +2,7 @@
 # To check running container: docker exec -it {{ cookiecutter.package_name }} /bin/bash
 
 
-FROM quay.io/cdis/python-nginx:master
+FROM quay.io/cdis/python-nginx:1.3.0
 
 
 ENV appname={{ cookiecutter.package_name }}
