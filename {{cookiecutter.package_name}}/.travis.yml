@@ -11,7 +11,6 @@ install:
 - pipenv graph
 script:
 - pipenv run py.test -vv --cov={{ cookiecutter.package_name }} --cov-report xml tests
-- pipenv run python th_wrapper.py -w truffles.json -c thog_config.json -g file:///${PWD}/ --check
 after_script:
 - pipenv run python-codacy-coverage -r coverage.xml
 {%- if cookiecutter.package_type == 'Library' %}
