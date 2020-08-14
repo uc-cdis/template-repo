@@ -24,12 +24,12 @@ This is template repository to create services.
 ## About Cookiecutter, Pipenv
 
 Though these two utilities are written in Python, they are recommended to be installed
-as global software on a development computer. Therefore, system packages are preferred 
+as global software on a development computer. Therefore, system packages are preferred
 over `pip install`, e.g. [Homebrew](https://brew.sh/) on macOS:
 
 ```bash
 brew install cookiecutter pipenv
-``` 
+```
 
 If `pip install` is your only option, you may choose to install in user base:
 
