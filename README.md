@@ -15,7 +15,7 @@ This is template repository to create services.
 2. Use Cookiecutter to create your new service:
 
     ```bash
-    cookiecutter gh:uc-cdis/template-repo
+    cookiecutter gh:occ-data/template-repo
     ```
 
 3. Follow the interactive guide and you'll get your new service.
