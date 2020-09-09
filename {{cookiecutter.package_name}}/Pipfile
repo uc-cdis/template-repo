@@ -4,31 +4,10 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-codacy-coverage = "*"
 pytest = "~=3.2"
 pytest-cov = "~=2.5"
-truffleHog = "*"
-PyGithub = "*"
-gen3git = "*"
-{%- if cookiecutter.package_type == 'Service' %}
-pytest-flask = "~=0.10"
-flasgger = "*"
-PyYAML = "~=5.1"
-{%- endif %}
 
 [packages]
-{%- if cookiecutter.package_type == 'Library' %}
-{{ cookiecutter.package_name }} = {editable = true,path = "."}
-{%- elif cookiecutter.package_type == 'Service' %}
-Flask = "*"
-Flask-CORS = "~=3.0"
-authutils = "~=3.0"
-cdiserrors = "~=0.1"
-cdispyutils = "~=0.2,>=0.2.11"
-gdcdictionary = "~=1.1"
-datamodelutils = "~=0.4"
-userdatamodel = "~=1.1"
-{%- endif %}
 
 [requires]
 python_version = "{{ cookiecutter.python_version }}"
