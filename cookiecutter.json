@@ -1,7 +1,4 @@
 {
     "package_name": "samplepackage",
     "package_type": ["Generic"],
-    "_copy_without_render": [
-        ".github/workflows/wool.yml"
-    ]
 }
