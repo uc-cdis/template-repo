@@ -1,7 +1,6 @@
 {
     "package_name": "samplepackage",
-    "package_type": ["Service", "Library"],
-    "python_version": "3.6",
+    "package_type": ["Generic],
     "_copy_without_render": [
         ".github/workflows/wool.yml"
     ]
