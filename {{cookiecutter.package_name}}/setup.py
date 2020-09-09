@@ -34,10 +34,4 @@ setup(
     description="{{ cookiecutter.package_type }} Template",
     url="https://github.com/occ-data/{{ cookiecutter.package_name }}",
     license="Apache",
-    packages=find_packages(),
-{%- if cookiecutter.package_type == 'Library' %}
-    install_requires=[
-        "cdiserrors~=0.1",
-    ],
-{%- endif %}
-)
+    packages=find_packages()
