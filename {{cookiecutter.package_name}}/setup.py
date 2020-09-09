@@ -32,7 +32,7 @@ setup(
     version=get_version(),
 {%- endif %}
     description="Gen3 {{ cookiecutter.package_type }} Template",
-    url="https://github.com/uc-cdis/{{ cookiecutter.package_name }}",
+    url="https://github.com/occ-data/{{ cookiecutter.package_name }}",
     license="Apache",
     packages=find_packages(),
 {%- if cookiecutter.package_type == 'Library' %}
