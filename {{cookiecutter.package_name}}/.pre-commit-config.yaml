@@ -3,7 +3,7 @@ repos:
     rev: v0.14.3
     hooks:
     -   id: detect-secrets
-        args: ['--baseline', '.secrets.baseline', '--custom-plugins', 'detect-secrets-plugins/']
+        args: ['--baseline', '.full_audit', '--custom-plugins', 'detect-secrets-plugins/']
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v2.5.0
     hooks:
