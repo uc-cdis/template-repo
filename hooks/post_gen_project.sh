@@ -14,7 +14,7 @@ git init
 git add -A .
 git commit -m 'Cut from gh:uc-cdis/template-repo'
 git tag 0.1.0
-git remote add origin git@github.com:occ-data/{{ cookiecutter.package_name }}.git
+git remote add origin  https://github.com/occ-data/{{ cookiecutter.package_name }}.git
 
 git commit --quiet --amend -m 'Cut from gh:occ-data/template-repo'
 git tag -f 0.1.0
